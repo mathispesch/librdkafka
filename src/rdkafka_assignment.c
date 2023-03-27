@@ -355,9 +355,8 @@ static int rd_kafka_assignment_serve_removals(rd_kafka_t *rk) {
                  * will not commit a stored offset from a previous
                  * assignment (issue #2782). */
                 rd_kafka_offset_store0(
-                    rktp, RD_KAFKA_FETCH_POS(RD_KAFKA_OFFSET_INVALID, -1),
-                    NULL, 0,
-                    rd_true, RD_DONT_LOCK);
+                    rktp, RD_KAFKA_FETCH_POS(RD_KAFKA_OFFSET_INVALID, -1), NULL,
+                    0, rd_true, RD_DONT_LOCK);
 
                 /* Partition is no longer desired */
                 rd_kafka_toppar_desired_del(rktp);
@@ -753,9 +752,8 @@ rd_kafka_assignment_add(rd_kafka_t *rk,
                 /* Reset the stored offset to INVALID to avoid the race
                  * condition described in rdkafka_offset.h */
                 rd_kafka_offset_store0(
-                    rktp, RD_KAFKA_FETCH_POS(RD_KAFKA_OFFSET_INVALID, -1),
-                    NULL, 0,
-                    rd_true /* force */, RD_DONT_LOCK);
+                    rktp, RD_KAFKA_FETCH_POS(RD_KAFKA_OFFSET_INVALID, -1), NULL,
+                    0, rd_true /* force */, RD_DONT_LOCK);
 
                 rd_kafka_toppar_unlock(rktp);
         }
