@@ -1,8 +1,46 @@
 # librdkafka v2.1.0
 
+librdkafka v2.1.0 is a feature release:
+
+* [KIP-320](https://cwiki.apache.org/confluence/display/KAFKA/KIP-320%3A+Allow+fetchers+to+detect+and+handle+log+truncation)
+  Allow fetchers to detect and handle log truncation (#4122).
+* Fix a reference count issue blocking the consumer from closing (#4187).
+* Fix a protocol issue with ListGroups API, where an extra
+  field was appended for API Versions greater than or equal to 3 (#4207).
+* Fix an issue with `max.poll.interval.ms`, where polling any queue would cause
+  the timeout to be reset (#4176).
+* Fix seek partition timeout, was one thousand times lower than the passed
+  value (#4230).
+* Batch consumer fixes: TODO: describe (#4208).
+* Update lz4.c from upstream. Fixes [CVE-2021-3520](https://github.com/advisories/GHSA-gmc7-pqv9-966m)
+  (by @filimonov, #4232).
+* Upgrade OpenSSL to v3.0.8 with various security fixes,
+  check the [release notes](https://www.openssl.org/news/cl30.txt) (#4215).
+
+## Enhancements
+
+ * Added `rd_kafka_topic_partition_get_leader_epoch()` (and `set..()`).
+ * Added partition leader epoch APIs:
+   - `rd_kafka_topic_partition_get_leader_epoch()` (and `set..()`)
+   - `rd_kafka_message_leader_epoch()`
+   - `rd_kafka_*assign()` and `rd_kafka_seek_partitions()` now supports
+     partitions with a leader epoch set.
+   - `rd_kafka_offsets_for_times()` will return per-partition leader-epochs.
+   - `leader_epoch`, `stored_leader_epoch`, and `committed_leader_epoch`
+     added to per-partition statistics.
+
+
+## Fixes
+
 ### Consumer fixes
 
-* Store offset commit metadata in `rd_kafka_offsets_store` (#4084).
+ * A reference count issue was blocking the consumer from closing.
+   The problem would happen when a partition is lost, because forcibly
+   unassigned from the consumer or if the corresponding topic is deleted.
+ * When using `rd_kafka_seek_partitions`, the remaining timeout was
+   converted from microseconds to milliseconds but the expected unit
+   for that parameter is microseconds.
+ * Store offset commit metadata in `rd_kafka_offsets_store` (#4171).
 
 
 

@@ -1856,7 +1856,7 @@ The [Apache Kafka Implementation Proposals (KIPs)](https://cwiki.apache.org/conf
 | KIP-84 - SASL SCRAM                                                      | 0.10.2.0                    | Supported                                                                                     |
 | KIP-85 - SASL config properties                                          | 0.10.2.0                    | Supported                                                                                     |
 | KIP-86 - Configurable SASL callbacks                                     | 2.0.0                       | Not supported                                                                                 |
-| KIP-88 - AdminAPI: ListGroupOffsets                                      | 0.10.2.0                    | Not supported                                                                                 |
+| KIP-88 - AdminAPI: ListGroupOffsets                                      | 0.10.2.0                    | Supported                                                                                 |
 | KIP-91 - Intuitive timeouts in Producer                                  | 2.1.0                       | Supported                                                                                     |
 | KIP-92 - Per-partition lag metrics in Consumer                           | 0.10.2.0                    | Supported                                                                                     |
 | KIP-97 - Backwards compatibility with older brokers                      | 0.10.2.0                    | Supported                                                                                     |
@@ -1887,7 +1887,7 @@ The [Apache Kafka Implementation Proposals (KIPs)](https://cwiki.apache.org/conf
 | KIP-289 - Consumer group.id default to NULL                              | 2.2.0                       | Supported                                                                                     |
 | KIP-294 - SSL endpoint verification                                      | 2.0.0                       | Supported                                                                                     |
 | KIP-302 - Use all addresses for resolved broker hostname                 | 2.1.0                       | Supported                                                                                     |
-| KIP-320 - Consumer: handle log truncation                                | 2.1.0, 2.2.0                | Not supported                                                                                 |
+| KIP-320 - Consumer: handle log truncation                                | 2.1.0, 2.2.0                | Supported                                                                                     |
 | KIP-322 - DeleteTopics disabled error code                               | 2.1.0                       | Supported                                                                                     |
 | KIP-339 - AdminAPI: incrementalAlterConfigs                              | 2.3.0                       | Not supported                                                                                 |
 | KIP-341 - Update Sticky partition assignment data                        | 2.3.0                       | Not supported (superceeded by KIP-429)                                                        |
@@ -1953,7 +1953,7 @@ release of librdkafka.
 | 0       | Produce             | 9           | 7                       |
 | 1       | Fetch               | 13          | 11                      |
 | 2       | ListOffsets         | 7           | 2                       |
-| 3       | Metadata            | 12          | 4                       |
+| 3       | Metadata            | 12          | 9                       |
 | 8       | OffsetCommit        | 8           | 7                       |
 | 9       | OffsetFetch         | 8           | 7                       |
 | 10      | FindCoordinator     | 4           | 2                       |
@@ -1974,7 +1974,7 @@ release of librdkafka.
 | 26      | EndTxn              | 3           | 1                       |
 | 28      | TxnOffsetCommit     | 3           | 3                       |
 | 32      | DescribeConfigs     | 4           | 1                       |
-| 33      | AlterConfigs        | 2           | 0                       |
+| 33      | AlterConfigs        | 2           | 1                       |
 | 36      | SaslAuthenticate    | 2           | 0                       |
 | 37      | CreatePartitions    | 3           | 0                       |
 | 42      | DeleteGroups        | 2           | 1                       |
